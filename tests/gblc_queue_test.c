@@ -1,6 +1,7 @@
 #include "gblc_queue.h"
 #include <stdio.h>
 
+#define TEST_TOTAL 7
 #define TEST_STR "Giedrute"
 #define TEST_INT 42
 
@@ -100,6 +101,12 @@ int main()
         printf("test #7 failed\n");
     }
 
-    printf("passed %i/7 tests\n---------------\n", passed);
-    return 0;
+    printf("passed %i/$i tests\n---------------\n", passed, TEST_TOTAL);
+
+    if (passed == TEST_TOTAL)
+    {
+        return 0;
+    }
+
+    return 1;
 }
