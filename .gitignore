@@ -1,0 +1,10 @@
+# Ignore compiled binaries
+/bin/
+/bin/*
+
+# Ignore object files
+/obj/
+/obj/*
+
+# Ignore library files
+/libgblc.a
