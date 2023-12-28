@@ -22,6 +22,9 @@ library: $(OBJ_FILES)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
 test: $(TEST_BINS)
 	@for test_bin in $(TEST_BINS); do \
 		echo "Running test: $$test_bin"; \
@@ -30,6 +33,9 @@ test: $(TEST_BINS)
 
 $(BIN_DIR)/%: $(TEST_DIR)/%.c library
 	$(CC) $(CFLAGS) $< -L. -lgblc $(LDFLAGS) -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 install: library
 	mkdir -p $(INSTALL_DIR)/include
