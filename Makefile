@@ -19,11 +19,11 @@ all: library
 library: $(OBJ_FILES)
 	ar rcs libgblc.a $(OBJ_FILES)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 test: $(TEST_BINS)
 	@for test_bin in $(TEST_BINS); do \
@@ -31,11 +31,11 @@ test: $(TEST_BINS)
 		./$$test_bin; \
 	done
 
-$(BIN_DIR)/%: $(TEST_DIR)/%.c library
+$(BIN_DIR)/%: $(TEST_DIR)/%.c library | $(BIN_DIR)
 	$(CC) $(CFLAGS) $< -L. -lgblc $(LDFLAGS) -o $@
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
 install: library
 	mkdir -p $(INSTALL_DIR)/include
@@ -45,4 +45,3 @@ install: library
 
 clean:
 	rm -f $(OBJ_DIR)/*.o libgblc.a $(TEST_BINS)
-

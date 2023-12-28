@@ -101,7 +101,7 @@ int main()
         printf("test #7 failed\n");
     }
 
-    printf("passed %i/$i tests\n---------------\n", passed, TEST_TOTAL);
+    printf("passed %i/%i tests\n---------------\n", passed, TEST_TOTAL);
 
     if (passed == TEST_TOTAL)
     {
