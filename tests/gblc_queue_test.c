@@ -1,4 +1,4 @@
-#include "gblc_queue.h"
+#include "../include/gblc_queue.h"
 #include <stdio.h>
 
 #define TEST_TOTAL 7
