@@ -6,6 +6,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
 TEST_DIR = tests
+INSTALL_DIR = /usr
 
 SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
@@ -37,9 +38,7 @@ $(BIN_DIR)/%: $(TEST_DIR)/%.c library | $(BIN_DIR)
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-install: library
-	mkdir -p $(INSTALL_DIR)/include
-	mkdir -p $(INSTALL_DIR)/lib
+install:
 	cp include/*.h $(INSTALL_DIR)/include
 	cp libgblc.a $(INSTALL_DIR)/lib
 
